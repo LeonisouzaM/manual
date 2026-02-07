@@ -39,9 +39,12 @@ const Payment = ({ onPayment }) => {
 
             {/* CTA Button */}
             <div className="flex flex-col gap-4 mb-6">
+                <p className="text-center text-success font-bold text-sm md:text-base leading-tight px-2">
+                    {copy.payment.ctaText}
+                </p>
                 <button
                     className="btn w-full btn-success py-4 text-lg shadow-lg hover:shadow-xl transition-all"
-                    onClick={() => window.open('https://pay.hotmart.com/placeholder', '_blank')}
+                    onClick={() => window.open('https://pay.hotmart.com/W104315897A', '_blank')}
                 >
                     {button}
                 </button>

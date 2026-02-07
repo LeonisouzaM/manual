@@ -77,6 +77,7 @@ export const copy = {
       "<b>Acceso a los bonos complementarios</b>, incluyendo materiales de apoyo técnico"
     ],
     footerText: "Este valor es una tasa operativa simbólica, destinada a cubrir costos de emisión, almacenamiento seguro y mantenimiento de la plataforma de verificación.",
+    ctaText: "Haz clic abajo para completar la emisión y recibir tu certificado ahora.",
     button: "DESBLOQUEAR CERTIFICADO"
   }
 };
