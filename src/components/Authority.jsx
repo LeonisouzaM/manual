@@ -11,6 +11,7 @@ const Authority = ({ onNext }) => {
             {/* Certificate Image - Placeholder for user content */}
             <div className="mb-6 flex justify-center">
                 <img
+                    src="/authority-cert.png"
                     className="rounded-lg shadow-lg w-full max-w-md object-cover"
                     style={{ maxHeight: '300px' }}
                     width="400"

@@ -11,7 +11,7 @@ const SocialProof = ({ onNext }) => {
             {/* Mechanic Image replacing the Icon */}
             <div className="mb-8 flex justify-center">
                 <img
-                    src="/mechanic-cert.jpg"
+                    src="/mechanic-cert.png"
                     alt="Mecánico certificado"
                     className="rounded-lg shadow-lg object-cover"
                     style={{
