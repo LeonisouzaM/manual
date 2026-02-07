@@ -85,6 +85,8 @@ const Result = ({ onNext }) => {
                             src="/certificate-locked.jpg"
                             alt="Certificado Bloqueado"
                             className="w-full h-full object-cover rounded-xl"
+                            width="300"
+                            height="220"
                         />
                     </div>
                 </div>

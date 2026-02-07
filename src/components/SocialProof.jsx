@@ -20,6 +20,8 @@ const SocialProof = ({ onNext }) => {
                         height: 'auto',
                         maxHeight: '220px'
                     }}
+                    width="280"
+                    height="220"
                 />
             </div>
 
