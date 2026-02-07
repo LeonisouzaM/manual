@@ -51,8 +51,9 @@ function App() {
                 />
             </header>
             <main className="flex-grow flex flex-col items-center justify-center p-4">
+                {step === 1 && <Welcome onNext={nextStep} />}
+
                 <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0284c7]"></div></div>}>
-                    {step === 1 && <Welcome onNext={nextStep} />}
                     {step === 2 && <SocialProof onNext={nextStep} />}
                     {step === 3 && <AreaSelection onNext={nextStep} setArea={setArea} />}
                     {step === 4 && <Authority onNext={nextStep} />}

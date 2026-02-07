@@ -82,7 +82,7 @@ const Result = ({ onNext }) => {
                     {/* Locked Certificate Box */}
                     <div className="border border-[#0284c7] rounded-xl flex items-center justify-center relative overflow-hidden h-full min-h-[220px] bg-white p-0">
                         <img
-                            src="/certificate-locked.png"
+                            src="/certificate-locked.jpg"
                             alt="Certificado Bloqueado"
                             className="w-full h-full object-cover rounded-xl"
                         />
