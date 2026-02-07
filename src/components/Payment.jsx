@@ -23,7 +23,7 @@ const Payment = ({ onPayment }) => {
                 <ul className="space-y-4">
                     {features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-3 text-sm text-text-main">
-                            <span className="text-text-main mt-0.5 flex-shrink-0">
+                            <span className="text-success mt-0.5 flex-shrink-0">
                                 <CheckCircle2 size={20} className="stroke-[2px]" />
                             </span>
                             <span dangerouslySetInnerHTML={{ __html: feature }}></span>
