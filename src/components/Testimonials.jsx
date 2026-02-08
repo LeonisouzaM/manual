@@ -6,25 +6,29 @@ const testimonials = [
         name: "Juan Carlos \"El Güero\"",
         location: "Monterrey, Nuevo León",
         text: "¡Nombre, cállate! Pensé que era puro cuento, pero el certificado sí es oficial. Ya lo puse en el taller y los clientes hasta me tratan con más respeto. ¡Jálense, sí conviene!",
-        photo: "https://randomuser.me/api/portraits/men/75.jpg"
+        photo: "https://randomuser.me/api/portraits/men/75.jpg",
+        evidence: "/cliente_certificado.jpg" // Foto do cliente segurando o certificado
     },
     {
         name: "Luis \"Chuy\" González",
         location: "Ciudad de México, CDMX",
         text: "La neta, banda, por el precio está regalado. Solo con los manuales de regalo ya desquitas la inversión. El examen no está difícil si le sabes a la mecánica. 100% recomendado.",
-        photo: "https://randomuser.me/api/portraits/men/32.jpg"
+        photo: "https://randomuser.me/api/portraits/men/32.jpg",
+        evidence: "/cliente_certificado.jpg"
     },
     {
         name: "Don Pedro Ramírez",
         location: "Guadalajara, Jalisco",
         text: "Tengo 20 años en la chamba y nunca había tenido un papel que dijera que soy mecánico. Ahora con este certificado validado, cobro mejor mis reparaciones. Muy profesional todo.",
-        photo: "https://randomuser.me/api/portraits/men/64.jpg"
+        photo: "https://randomuser.me/api/portraits/men/64.jpg",
+        evidence: "/cliente_certificado.jpg"
     },
     {
         name: "Mateo de la Cruz",
         location: "Puebla, Puebla",
         text: "¡Está bien padre! Me llegó el PDF al toque después del pago. Lo imprimí en papel diploma y se ve de lujo en la pared. Ya varios compas del taller lo van a sacar también.",
-        photo: "https://randomuser.me/api/portraits/men/86.jpg"
+        photo: "https://randomuser.me/api/portraits/men/86.jpg",
+        evidence: "/cliente_certificado.jpg"
     }
 ];
 
@@ -139,6 +143,28 @@ const Testimonials = () => {
                             <p style={textStyle}>
                                 "{t.text}"
                             </p>
+                        </div>
+
+                        {/* Photo Evidence (New!) */}
+                        <div style={{
+                            width: '100%',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            border: '1px solid #e5e7eb',
+                            marginTop: '8px'
+                        }}>
+                            <img
+                                src={t.evidence}
+                                alt={`Certificado de ${t.name}`}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    display: 'block'
+                                }}
+                                onError={(e) => {
+                                    e.target.style.display = 'none'; // Hide if simplified
+                                }}
+                            />
                         </div>
 
                         {/* Verified Footer */}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import StepLayout from './StepLayout';
 import { copy } from '../data/quizData';
 import { Gift, CheckCircle2 } from 'lucide-react';
@@ -6,6 +6,23 @@ import Testimonials from './Testimonials';
 
 const Offer = ({ onNext }) => {
     const { title, text, bonuses, button, sectionHeader } = copy.offer;
+
+    useEffect(() => {
+        if (!document.querySelector('script[src="https://fast.wistia.com/player.js"]')) {
+            const script = document.createElement('script');
+            script.src = "https://fast.wistia.com/player.js";
+            script.async = true;
+            document.body.appendChild(script);
+        }
+
+        if (!document.querySelector('script[src*="jhnp0kvf2f.js"]')) {
+            const script = document.createElement('script');
+            script.src = "https://fast.wistia.com/embed/jhnp0kvf2f.js";
+            script.async = true;
+            script.type = "module";
+            document.body.appendChild(script);
+        }
+    }, []);
 
     return (
         <StepLayout>
