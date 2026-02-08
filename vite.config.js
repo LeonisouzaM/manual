@@ -7,11 +7,10 @@ export default defineConfig({
     build: {
         rollupOptions: {
             output: {
-                manualChunks: {
-                    vendor: ['react', 'react-dom'],
-                    motion: ['framer-motion'],
-                    icons: ['lucide-react'],
-                    utils: ['canvas-confetti']
+                manualChunks: (id) => {
+                    if (id.includes('node_modules')) {
+                        return 'vendor';
+                    }
                 }
             }
         }
