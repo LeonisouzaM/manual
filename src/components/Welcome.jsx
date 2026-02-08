@@ -1,13 +1,13 @@
-import React from 'react';
-import StepLayout from './StepLayout';
+import React, { memo } from 'react';
+import SimpleStepLayout from './SimpleStepLayout';
 import { copy } from '../data/quizData';
 import { Wrench } from 'lucide-react';
 
-const Welcome = ({ onNext }) => {
+const Welcome = memo(({ onNext }) => {
     const { title, text, button } = copy.welcome;
 
     return (
-        <StepLayout>
+        <SimpleStepLayout>
             <div className="logo-area">
                 <div className="icon-box">
                     <Wrench size={32} />
@@ -22,8 +22,8 @@ const Welcome = ({ onNext }) => {
             <button className="btn w-full" onClick={onNext}>
                 {button}
             </button>
-        </StepLayout>
+        </SimpleStepLayout>
     );
-};
+});
 
 export default Welcome;
