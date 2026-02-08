@@ -2,6 +2,7 @@ import React from 'react';
 import StepLayout from './StepLayout';
 import { copy } from '../data/quizData';
 import { Gift, CheckCircle2 } from 'lucide-react';
+import Testimonials from './Testimonials';
 
 const Offer = ({ onNext }) => {
     const { title, text, bonuses, button, sectionHeader } = copy.offer;
@@ -12,6 +13,11 @@ const Offer = ({ onNext }) => {
             <h2 className="text-center mb-4 leading-tight text-primary font-bold text-2xl md:text-3xl px-2">
                 {title}
             </h2>
+
+            {/* VSL Video */}
+            <div className="w-full max-w-[320px] md:max-w-[360px] mx-auto mb-8 rounded-xl overflow-hidden shadow-lg border-2 border-[#0284c7]">
+                <wistia-player media-id="jhnp0kvf2f" aspect="0.5625"></wistia-player>
+            </div>
 
             {/* Subtitle Text */}
             <p className="mb-8 text-center text-text-main px-4 leading-relaxed">
@@ -46,6 +52,9 @@ const Offer = ({ onNext }) => {
                     ))}
                 </ul>
             </div>
+
+            {/* Mexican Testimonials Section */}
+            <Testimonials />
 
             <button className="btn w-full btn-primary animate-pulse font-bold text-lg py-4" onClick={onNext}>
                 {button}
