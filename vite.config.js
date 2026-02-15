@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
     plugins: [react()],
     build: {
+        // Fix for Vercel: use esbuild default minification
         minify: true,
         reportCompressedSize: false, // Speed up build
         rollupOptions: {
