@@ -15,7 +15,7 @@ const Certificate = lazy(() => import('./Certificate'));
 const QuizFlow = ({ step, onNext, setArea, handleAnswer, currentQuestionData, totalQuestions }) => {
     return (
         <LazyMotion features={domAnimation}>
-            <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0284c7]"></div></div>}>
+            <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#16a34a]"></div></div>}>
                 {step === 2 && <SocialProof onNext={onNext} />}
                 {step === 3 && <AreaSelection onNext={onNext} setArea={setArea} />}
                 {step === 4 && <Authority onNext={onNext} />}

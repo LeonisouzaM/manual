@@ -46,7 +46,7 @@ function App() {
                 {step === 1 ? (
                     <Welcome onNext={nextStep} />
                 ) : (
-                    <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#0284c7]"></div></div>}>
+                    <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#16a34a]"></div></div>}>
                         <QuizFlow
                             step={step}
                             onNext={nextStep}

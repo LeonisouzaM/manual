@@ -1,7 +1,7 @@
 
 export const copy = {
   welcome: {
-    title: "Bienvenido al Manual del Mecánico – Certificación Profesional",
+    title: "Bienvenido al El Código del Mecánico Profesional – Certificación Profesional",
     text: [
       "Antes de emitir tu certificado, necesitamos evaluar rápidamente tu nivel de conocimiento en mecánica.",
       "Responderás 10 preguntas sencillas y, al final, tu certificado autenticado quedará disponible para descarga e impresión.",
@@ -46,39 +46,32 @@ export const copy = {
     button: "CONTINUAR"
   },
   offer: {
-    title: "¡Tu Certificado Profesional del Manual del Mecánico está listo para emisión!",
-    text: "Para recibir tu versión autenticada en PDF, con código de validación y QR Code oficial, necesitas desbloquear su emisión.",
-    sectionHeader: "Desbloqueando ahora, recibes también:",
-    bonuses: [
-      {
-        title: "Checklist de Diagnóstico Rápido",
-        description: "Guía profesional con pasos objetivos para identificar fallas en minutos."
-      },
-      {
-        title: "Guía de Torque y Mantenimiento Esencial",
-        description: "Atajos de servicio que los mecánicos experimentados usan todos los días."
-      },
-      {
-        title: "Plantilla de Presupuesto Profesional",
-        description: "Para presentar servicios con más credibilidad."
-      }
+    title: "Obtén tu Certificado Profesional Automotriz y aumenta la confianza de tus clientes desde hoy",
+    text: "Más de 2,347 mecánicos en México ya fortalecieron su imagen profesional con certificación autenticada y código de verificación.",
+    sectionHeader: "¿Por qué este certificado puede ayudarte a crecer?",
+    benefits: [
+      "Genera más confianza en tus clientes",
+      "Diferénciate de talleres informales",
+      "Refuerza tu imagen profesional",
+      "Demuestra compromiso y formalidad"
     ],
-    button: "CONTINUAR"
+    button: "QUIERO MI CERTIFICADO AHORA"
   },
   payment: {
-    text: "Para liberar la emisión de tu Certificado Profesional autenticado, es necesario realizar apenas un pago único de",
+    text: "Estás a un paso de recibir tu Certificado Profesional autenticado.",
+    subText: "Activa tu emisión oficial con un único pago.",
     price: "MX$ 185,60",
-    cardTitle: "Lo que está incluido en la tasa de emisión:",
+    priceNote: "Pago único",
+    priceDescription: "Menos que el valor de un servicio básico y válido de forma permanente.",
+    cardTitle: "Con tu certificado podrás:",
     features: [
-      "<b>Autenticación digital</b> con código exclusivo de validación",
-      "<b>Generación del certificado en PDF</b> con diseño oficial",
-      "<b>Registro interno del documento</b> para consultas futuras",
-      "<b>Disponibilidad inmediata</b> vía WhatsApp o e-mail",
-      "<b>Acceso a los bonos complementarios</b>, incluyendo materiales de apoyo técnico"
+      "<b>Recibir tu documento en PDF</b> listo para imprimir",
+      "<b>Validación digital</b> con código exclusivo",
+      "<b>Acceso inmediato</b> vía WhatsApp o e-mail",
+      "<b>Registro interno</b> para verificación futura"
     ],
     footerText: "Este valor es una tasa operativa simbólica, destinada a cubrir costos de emisión, almacenamiento seguro y mantenimiento de la plataforma de verificación.",
-    ctaText: "Haz clic abajo para completar la emisión y recibir tu certificado ahora.",
-    button: "DESBLOQUEAR CERTIFICADO"
+    button: "ACTIVAR MI CERTIFICADO AHORA"
   }
 };
 

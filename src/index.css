@@ -3,10 +3,10 @@
     --bg-dark: #ffffff;
     --bg-card: #ffffff;
     --bg-card-hover: #f3f4f6;
-    --primary: #2563eb;
-    /* Royal Blue */
-    --primary-hover: #1d4ed8;
-    --primary-glow: rgba(37, 99, 235, 0.2);
+    --primary: #16a34a;
+    /* Green */
+    --primary-hover: #15803d;
+    --primary-glow: rgba(22, 163, 74, 0.2);
 
     --success: #10b981;
     --warning: #f59e0b;
@@ -466,7 +466,7 @@ button {
 }
 
 .border-\[\#0284c7\] {
-    border-color: #0284c7;
+    border-color: #16a34a;
 }
 
 /* Typography */
@@ -511,7 +511,7 @@ button {
 }
 
 .text-\[\#0284c7\] {
-    color: #0284c7;
+    color: #16a34a;
 }
 
 /* Effects */
@@ -539,20 +539,15 @@ button {
     filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
 }
 
-.transform {
-    transform: rotate(-90deg);
-}
-
 /* Specifically for the SVG rotation */
 
-/* SVG Circle Styles */
 /* SVG Circle Styles */
 .stroke-gray-200 {
     stroke: #e5e7eb;
 }
 
 .stroke-\[\#0284c7\] {
-    stroke: #0284c7;
+    stroke: #16a34a;
 }
 
 .fill-none {

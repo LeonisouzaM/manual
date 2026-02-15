@@ -1,34 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100" width="450" height="100">
   <defs>
-    <linearGradient id="textGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#0369a1;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#0c4a6e;stop-opacity:1" />
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#15803d;stop-opacity:1" />
     </linearGradient>
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
-      <feOffset dx="2" dy="2" result="offsetblur"/>
-      <feComponentTransfer>
-         <feFuncA type="linear" slope="0.3"/>
-      </feComponentTransfer>
-      <feMerge> 
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/> 
-      </feMerge>
-    </filter>
   </defs>
 
-  <g text-anchor="middle" font-family="Arial, sans-serif">
-    <!-- TOP TEXT: MANUAL DEL -->
-    <!-- Moved UP to create space -->
-    <text x="300" y="60" font-weight="900" font-size="38" fill="#003366" letter-spacing="2">MANUAL DEL</text>
+  <!-- Icon Section -->
+  <g transform="translate(10, 10)">
+    <!-- Gear Shape Base -->
+    <path fill="url(#grad1)" d="M40,0C17.9,0,0,17.9,0,40s17.9,40,40,40s40-17.9,40-40S62.1,0,40,0z M40,68c-15.5,0-28-12.5-28-28 s12.5-28,28-28s28,12.5,28,28S55.5,68,40,68z"/>
+    <!-- Wrench Inside -->
+    <path fill="#111827" d="M48.5,23.5c-3.6-3.6-9.4-3.6-13,0l-12,12l-7.5-2.5l-2.5,7.5l12,12l2.5,7.5l7.5-2.5l12-12
+      c3.6-3.6,3.6-9.4,0-13L48.5,23.5z M39,45l-4-4l4-4l4,4L39,45z"/>
+  </g>
 
-    <!-- BOTTOM TEXT: MECÁNICO -->
-    <!-- Moved DOWN to separate it clearly -->
-    <text x="300" y="130" font-weight="900" font-size="68" fill="url(#textGradient)" stroke="white" stroke-width="3" filter="url(#softShadow)" letter-spacing="1">MECÁNICO</text>
+  <!-- Text Section -->
+  <g transform="translate(100, 0)">
+    <!-- Top Line -->
+    <text x="0" y="30" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="14" fill="#16a34a" letter-spacing="1.5">EL CÓDIGO DEL</text>
     
-    <!-- Curved Line Underneath -->
-    <!-- Moved down to accommodate text shift -->
-    <path d="M220,155 Q300,175 380,155" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/>
+    <!-- Middle Line (Main) -->
+    <text x="0" y="68" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="38" fill="#111827" letter-spacing="-1">MECÁNICO</text>
+    
+    <!-- Bottom Line -->
+    <text x="5" y="90" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#4B5563" letter-spacing="4.5">PROFESIONAL</text>
   </g>
 </svg>

@@ -8,7 +8,7 @@ const Loading = ({ onComplete }) => {
     useEffect(() => {
         // Deterministic progress for UI
         const startTime = Date.now();
-        const duration = 5000;
+        const duration = 3000;
 
         const interval = setInterval(() => {
             const elapsed = Date.now() - startTime;
@@ -23,7 +23,7 @@ const Loading = ({ onComplete }) => {
         // Guaranteed completion trigger
         const completeTimer = setTimeout(() => {
             onComplete();
-        }, duration + 200); // 5s + 200ms buffer
+        }, duration + 200); // 3s + 200ms buffer
 
         return () => {
             clearInterval(interval);
@@ -35,7 +35,7 @@ const Loading = ({ onComplete }) => {
         <StepLayout>
             <div className="flex flex-col items-center justify-center py-16 text-center">
                 {/* Custom Spinner */}
-                <div className="loading-spinner animate-spin"></div>
+
 
                 <h2 className="text-xl md:text-2xl font-bold mb-2 text-text-main">
                     Analizando sus respuestas...
@@ -49,22 +49,22 @@ const Loading = ({ onComplete }) => {
                     width: '100%',
                     maxWidth: '320px',
                     height: '12px',
-                    backgroundColor: 'var(--bg-card-hover)',
+                    backgroundColor: '#eff6ff', // Light blue track
                     borderRadius: '10px',
                     overflow: 'hidden',
                     marginTop: '10px',
-                    border: '1px solid var(--border-light)'
+                    border: '1px solid #bfdbfe' // Light blue border
                 }}>
                     <div style={{
                         width: `${progress}%`,
                         height: '100%',
-                        backgroundColor: 'var(--primary)',
+                        backgroundColor: '#2563eb', // Blue fill
                         transition: 'width 0.05s linear',
-                        boxShadow: '0 0 10px var(--primary-glow)'
+                        boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)'
                     }}></div>
                 </div>
 
-                <p className="mt-3 font-bold text-primary">
+                <p className="mt-3 font-bold" style={{ color: '#2563eb' }}>
                     {Math.round(progress)}%
                 </p>
             </div>

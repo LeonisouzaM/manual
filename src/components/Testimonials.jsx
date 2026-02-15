@@ -89,7 +89,7 @@ const Testimonials = () => {
                 marginBottom: '24px',
                 lineHeight: '1.3'
             }}>
-                Lo que dice la raza <span style={{ color: '#0284c7' }}>Certificada</span> 🇲🇽
+                Lo que dice la raza <span style={{ color: '#16a34a' }}>Certificada</span> 🇲🇽
             </h3>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -161,11 +161,11 @@ const Testimonials = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                color: '#0284c7', // Full Blue text
+                color: '#16a34a', // Full Green text
                 fontSize: '14px',
                 fontWeight: '700',
-                backgroundColor: '#f0f9ff', // Light blue bg
-                border: '1px solid #bae6fd', // Blue border
+                backgroundColor: '#f0fdf4', // Light green bg
+                border: '1px solid #bbf7d0', // Green border
                 padding: '10px 20px',
                 borderRadius: '9999px',
                 width: 'fit-content',
