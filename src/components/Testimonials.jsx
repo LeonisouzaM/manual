@@ -3,32 +3,32 @@ import { Star, CheckCircle2 } from 'lucide-react';
 
 const testimonials = [
     {
-        name: "Juan Carlos \"El Güero\"",
+        name: "Pedro Ramirez",
         location: "Monterrey, Nuevo León",
         text: "¡Nombre, cállate! Pensé que era puro cuento, pero el certificado sí es oficial. Ya lo puse en el taller y los clientes hasta me tratan con más respeto. ¡Jálense, sí conviene!",
         photo: "https://randomuser.me/api/portraits/men/75.jpg",
-        evidence: "/mechanic-cert.jpg" // Foto do cliente segurando o certificado
+        evidence: "/mechanic-evidence-1.jpg" // Foto do cliente segurando o certificado
     },
     {
-        name: "Luis \"Chuy\" González",
+        name: "Jose Luiz Garcia",
         location: "Ciudad de México, CDMX",
         text: "La neta, banda, por el precio está regalado. Solo con los manuales de regalo ya desquitas la inversión. El examen no está difícil si le sabes a la mecánica. 100% recomendado.",
         photo: "https://randomuser.me/api/portraits/men/32.jpg",
-        evidence: "/mechanic-cert.jpg"
+        evidence: "/mechanic-evidence-2.jpg"
     },
     {
-        name: "Don Pedro Ramírez",
+        name: "Mateo Ramirez",
         location: "Guadalajara, Jalisco",
         text: "Tengo 20 años en la chamba y nunca había tenido un papel que dijera que soy mecánico. Ahora con este certificado validado, cobro mejor mis reparaciones. Muy profesional todo.",
-        photo: "https://randomuser.me/api/portraits/men/64.jpg",
-        evidence: "/mechanic-cert.jpg"
+        photo: "/don-pedro-profile.jpg",
+        evidence: "/mechanic-evidence-3.jpg"
     },
     {
-        name: "Mateo de la Cruz",
+        name: "Javier Hernandez",
         location: "Puebla, Puebla",
         text: "¡Está bien padre! Me llegó el PDF al toque después del pago. Lo imprimí en papel diploma y se ve de lujo en la pared. Ya varios compas del taller lo van a sacar también.",
         photo: "https://randomuser.me/api/portraits/men/86.jpg",
-        evidence: "/mechanic-cert.jpg"
+        evidence: "/mechanic-evidence-4.jpg"
     }
 ];
 
@@ -97,29 +97,7 @@ const Testimonials = () => {
                     <div key={index} style={cardStyle}>
                         {/* Header: Photo + Info */}
                         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                            <div style={{ position: 'relative' }}>
-                                <img
-                                    src={t.photo}
-                                    alt={t.name}
-                                    style={{
-                                        width: '60px',
-                                        height: '60px',
-                                        borderRadius: '50%',
-                                        objectFit: 'cover',
-                                        border: '3px solid #f3f4f6'
-                                    }}
-                                />
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: '0',
-                                    right: '0',
-                                    backgroundColor: '#22c55e',
-                                    width: '14px',
-                                    height: '14px',
-                                    borderRadius: '50%',
-                                    border: '2px solid white'
-                                }}></div>
-                            </div>
+
 
                             <div style={{ flex: 1 }}>
                                 <h4 style={nameStyle}>{t.name}</h4>
