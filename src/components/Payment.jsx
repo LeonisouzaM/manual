@@ -6,12 +6,14 @@ import { CheckCircle2, ShieldCheck, Lock, FileText, Smartphone } from 'lucide-re
 const Payment = ({ onPayment }) => {
     const { text, subText, features, button, price, priceNote, priceDescription, cardTitle, footerText } = copy.payment;
 
-    // Track InitiateCheckout
-    useEffect(() => {
+    const handleCheckout = () => {
         if (window.fbq) {
             window.fbq('track', 'InitiateCheckout');
         }
-    }, []);
+        setTimeout(() => {
+            window.location.href = 'https://pay.hotmart.com/W104315897A';
+        }, 500);
+    };
 
     return (
         <StepLayout>
@@ -59,7 +61,7 @@ const Payment = ({ onPayment }) => {
             <div className="flex flex-col gap-6 mb-8">
                 <button
                     className="btn w-full btn-success py-5 text-xl font-bold shadow-lg hover:shadow-xl hover:scale-[1.01] transition-all uppercase tracking-wide"
-                    onClick={() => window.open('https://pay.hotmart.com/W104315897A', '_blank')}
+                    onClick={handleCheckout}
                 >
                     {button}
                 </button>

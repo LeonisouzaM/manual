@@ -30,7 +30,10 @@ const Welcome = memo(({ onNext }) => {
                     <p key={index}>{paragraph}</p>
                 ))}
             </div>
-            <button className="btn w-full" onClick={onNext}>
+            <button className="btn w-full" onClick={() => {
+                if (window.fbq) window.fbq('track', 'ViewContent');
+                onNext();
+            }}>
                 {button}
             </button>
         </SimpleStepLayout>
