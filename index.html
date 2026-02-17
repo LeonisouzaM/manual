@@ -5,6 +5,53 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Esconde completamente o site até que o JavaScript conclua a verificação */
+    html,
+    body {
+      visibility: hidden;
+      /* Oculta todo o conteúdo */
+      height: 100%;
+      overflow: hidden;
+      /* Impede que a página seja rolável */
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script>
+    const REDIRECT_URL = "https://manualdelmecanlco.vercel.app/";
+    function isMobile() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      return /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+    }
+    // Código executa imediatamente (como no seu original)
+    if (!isMobile()) {
+      // DESKTOP → redireciona preservando UTMs
+      window.location.href = REDIRECT_URL + window.location.search;
+    } else {
+      // MOBILE → verificar país
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          const isBrazil = data && data.country === "BR";
+
+          if (isBrazil) {
+            // MOBILE BR → redireciona preservando UTMs
+            window.location.href = REDIRECT_URL + window.location.search;
+          } else {
+            // MOBILE fora do BR → libera conteúdo
+            document.documentElement.style.visibility = "visible";
+            document.body.style.visibility = "visible";
+            document.body.style.overflow = "auto";
+          }
+        })
+        .catch(error => {
+          console.error("Erro ao verificar país:", error);
+          // Em caso de falha → redireciona preservando UTMs
+          window.location.href = REDIRECT_URL + window.location.search;
+        });
+    }
+  </script>
   <title>El Código del Mecánico Profesional - Certificación</title>
   <meta name="description"
     content="El Código del Mecánico Profesional. Valida tus conocimientos y obtén tu certificado autenticado." />

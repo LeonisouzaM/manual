@@ -137,7 +137,7 @@ const Payment = ({ onPayment }) => {
                     justifyContent: 'center'
                 }}>
                     <span style={{
-                        color: '#9ca3af',
+                        color: '#000000',
                         fontSize: '0.7rem',
                         textTransform: 'uppercase',
                         letterSpacing: '0.1em',
@@ -145,11 +145,16 @@ const Payment = ({ onPayment }) => {
                         marginBottom: '0.25rem'
                     }}>{priceNote}</span>
                     <span style={{
-                        color: '#9ca3af',
                         fontSize: '0.85rem',
-                        textDecoration: 'line-through',
                         marginBottom: '0.25rem'
-                    }}>MX$ 497.00</span>
+                    }}>
+                        <span style={{ color: '#000000' }}>MX$ </span>
+                        <span style={{
+                            color: '#dc2626',
+                            textDecoration: 'line-through',
+                            textDecorationColor: '#000000'
+                        }}>497.00</span>
+                    </span>
                     <h3 style={{
                         color: '#16a34a',
                         fontWeight: 900,

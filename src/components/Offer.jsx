@@ -266,14 +266,14 @@ const Offer = ({ onNext }) => {
                             }}
                         >
                             <div style={{ flexShrink: 0 }}>
-                                <CheckCircle2 size={22} style={{ color: '#dc2626' }} strokeWidth={2.5} />
+                                <CheckCircle2 size={22} style={{ color: '#16a34a' }} strokeWidth={2.5} />
                             </div>
                             <span style={{
                                 color: '#111827',
-                                fontWeight: 600,
+                                fontWeight: 500,
                                 fontSize: '0.95rem',
                                 lineHeight: 1.4
-                            }}>{benefit}</span>
+                            }} dangerouslySetInnerHTML={{ __html: benefit }} />
                         </div>
                     ))}
                 </div>
@@ -305,8 +305,13 @@ const Offer = ({ onNext }) => {
                     <Flame size={12} />
                     OFERTA ESPECIAL
                 </div>
-                <p style={{ color: '#9ca3af', fontSize: '0.8rem', marginBottom: '0.25rem', textDecoration: 'line-through' }}>
-                    Precio regular: MX$ 497.00
+                <p style={{ fontSize: '0.9rem', marginBottom: '0.25rem', fontWeight: 600 }}>
+                    <span style={{ color: '#000000' }}>Precio regular: MX$ </span>
+                    <span style={{
+                        color: '#dc2626',
+                        textDecoration: 'line-through',
+                        textDecorationColor: '#000000'
+                    }}>497.00</span>
                 </p>
                 <h3 style={{
                     color: '#16a34a',
