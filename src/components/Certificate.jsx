@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import StepLayout from './StepLayout';
 import { jsPDF } from 'jspdf';
 import QRCode from 'qrcode';
-import { Download, Share2 } from 'lucide-react';
+import { Download } from 'lucide-react';
 
 const Certificate = () => {
     const [name, setName] = useState('');
@@ -12,8 +12,7 @@ const Certificate = () => {
     const certRef = useRef(null);
 
     useEffect(() => {
-        // Generate QR Code
-        QRCode.toDataURL(`https://manualdelmecanico.com/verify/${validationCode}`)
+        QRCode.toDataURL(`https://codigodelmecanico.com/verify/${validationCode}`)
             .then(url => setQrUrl(url))
             .catch(err => console.error(err));
     }, [validationCode]);
@@ -39,82 +38,175 @@ const Certificate = () => {
     };
 
     return (
-        <StepLayout className="max-w-4xl"> {/* Wider for certificate preview */}
-            <div className="text-center mb-6 no-print">
-                <h2 className="mb-4">¡Felicidades!</h2>
-                <p>Ingresa tu nombre completo como deseas que aparezca en el certificado.</p>
+        <StepLayout className="max-w-4xl">
+            {/* Header */}
+            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }} className="no-print">
+                <div style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    background: 'rgba(220, 38, 38, 0.06)',
+                    border: '1px solid rgba(220, 38, 38, 0.12)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1rem'
+                }}>
+                    <span style={{ fontSize: '1.75rem' }}>🎉</span>
+                </div>
+
+                <h2 style={{
+                    color: '#dc2626',
+                    fontWeight: 800,
+                    fontSize: '1.75rem',
+                    marginBottom: '0.5rem'
+                }}>¡Felicidades!</h2>
+                <p style={{ color: '#6b7280', fontSize: '0.925rem', marginBottom: '1.25rem' }}>
+                    Ingresa tu nombre completo como deseas que aparezca en el certificado.
+                </p>
+
                 <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Nombre Completo"
-                    className="w-full max-w-md p-3 rounded-md bg-bg-card border border-border-light text-white mb-4 text-center text-lg"
+                    style={{
+                        width: '100%',
+                        maxWidth: '28rem',
+                        padding: '0.875rem 1rem',
+                        borderRadius: '12px',
+                        background: '#ffffff',
+                        border: '1.5px solid #e5e7eb',
+                        color: '#111827',
+                        fontSize: '1rem',
+                        textAlign: 'center',
+                        outline: 'none',
+                        transition: 'all 0.3s ease',
+                        fontFamily: 'Inter, sans-serif'
+                    }}
+                    onFocus={(e) => {
+                        e.target.style.borderColor = '#dc2626';
+                        e.target.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.08)';
+                    }}
+                    onBlur={(e) => {
+                        e.target.style.borderColor = '#e5e7eb';
+                        e.target.style.boxShadow = 'none';
+                    }}
                 />
             </div>
 
             {/* Certificate Preview */}
-            <div className="overflow-x-auto mb-8">
+            <div className="overflow-x-auto" style={{ marginBottom: '2rem' }}>
                 <div
                     ref={certRef}
-                    className="bg-white text-black p-10 relative shadow-2xl mx-auto"
-                    style={{ width: '800px', height: '600px', minWidth: '800px' }}
+                    style={{
+                        width: '800px',
+                        height: '600px',
+                        minWidth: '800px',
+                        background: '#fff',
+                        color: '#000',
+                        padding: '40px',
+                        position: 'relative',
+                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                        margin: '0 auto',
+                        borderRadius: '4px'
+                    }}
                 >
-                    {/* Border/Frame */}
-                    <div className="absolute inset-4 border-4 border-gray-800 pointer-events-none"></div>
-                    <div className="absolute inset-6 border border-gray-400 pointer-events-none"></div>
+                    {/* Borders */}
+                    <div style={{ position: 'absolute', inset: '16px', border: '4px solid #1f2937', pointerEvents: 'none' }} />
+                    <div style={{ position: 'absolute', inset: '24px', border: '1px solid #9ca3af', pointerEvents: 'none' }} />
 
                     {/* Header */}
-                    <div className="text-center mt-10">
-                        <h1 className="text-4xl font-serif text-gray-900 uppercase tracking-widest mb-2" style={{ fontFamily: 'serif' }}>Certificado Profesional</h1>
-                        <div className="w-16 h-1 bg-yellow-600 mx-auto mb-6"></div>
-                        <p className="text-xl text-gray-600 font-serif italic">Se otorga el presente reconocimiento a:</p>
+                    <div style={{ textAlign: 'center', marginTop: '40px' }}>
+                        <h1 style={{
+                            fontSize: '2.25rem',
+                            fontFamily: 'Georgia, serif',
+                            color: '#111827',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.1em',
+                            marginBottom: '8px'
+                        }}>Certificado Profesional</h1>
+                        <div style={{
+                            width: '64px',
+                            height: '4px',
+                            background: '#ca8a04',
+                            margin: '0 auto 24px'
+                        }} />
+                        <p style={{
+                            fontSize: '1.25rem',
+                            color: '#4b5563',
+                            fontFamily: 'Georgia, serif',
+                            fontStyle: 'italic'
+                        }}>Se otorga el presente reconocimiento a:</p>
                     </div>
 
                     {/* Name */}
-                    <div className="text-center mt-8 mb-8">
-                        <h2 className="text-5xl font-bold text-blue-900 border-b-2 border-gray-300 inline-block pb-2 px-8 min-w-[400px]">
+                    <div style={{ textAlign: 'center', margin: '32px 0' }}>
+                        <h2 style={{
+                            fontSize: '2.75rem',
+                            fontWeight: 700,
+                            color: '#1e3a5f',
+                            borderBottom: '2px solid #d1d5db',
+                            display: 'inline-block',
+                            padding: '0 32px 8px',
+                            minWidth: '400px'
+                        }}>
                             {name || "NOMBRE DEL ALUMNO"}
                         </h2>
                     </div>
 
                     {/* Description */}
-                    <div className="text-center max-w-2xl mx-auto mb-12">
-                        <p className="text-lg text-gray-700 leading-relaxed">
-                            Por haber acreditado satisfactoriamente la evaluación técnica del <strong>Manual del Mecánico</strong>,
+                    <div style={{ textAlign: 'center', maxWidth: '550px', margin: '0 auto 48px' }}>
+                        <p style={{
+                            fontSize: '1.125rem',
+                            color: '#374151',
+                            lineHeight: 1.6
+                        }}>
+                            Por haber acreditado satisfactoriamente la evaluación técnica de <strong>El Código del Mecánico Profesional</strong>,
                             validando sus conocimientos en mecánica automotriz y mantenimiento preventivo.
                         </p>
                     </div>
 
-                    {/* Footer - Signatures & QR */}
-                    <div className="flex justify-between items-end px-16 mt-16">
-                        <div className="text-center">
-                            <div className="w-40 border-t border-gray-800 pt-2 mb-1">
-                                <p className="font-bold text-sm">Instructor Jefe</p>
+                    {/* Footer */}
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-end',
+                        padding: '0 64px',
+                        marginTop: '64px'
+                    }}>
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ width: '160px', borderTop: '1px solid #1f2937', padding: '8px 0 4px' }}>
+                                <p style={{ fontWeight: 700, fontSize: '0.875rem', color: '#000' }}>Instructor Jefe</p>
                             </div>
-                            <p className="text-xs text-gray-500">Manual del Mecánico</p>
+                            <p style={{ fontSize: '0.75rem', color: '#6b7280' }}>El Código del Mecánico Profesional</p>
                         </div>
 
-                        <div className="text-center flex flex-col items-center">
-                            {qrUrl && <img src={qrUrl} alt="QR Code" className="w-20 h-20 mb-2" />}
-                            <p className="text-[10px] text-gray-400">Validación: {validationCode}</p>
+                        <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            {qrUrl && <img src={qrUrl} alt="QR Code" style={{ width: '80px', height: '80px', marginBottom: '8px' }} />}
+                            <p style={{ fontSize: '10px', color: '#9ca3af' }}>Validación: {validationCode}</p>
                         </div>
 
-                        <div className="text-center">
-                            <p className="text-lg font-bold mb-1">{date}</p>
-                            <div className="w-40 border-t border-gray-800 pt-2">
-                                <p className="font-bold text-sm">Fecha de Emisión</p>
+                        <div style={{ textAlign: 'center' }}>
+                            <p style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: '4px', color: '#000' }}>{date}</p>
+                            <div style={{ width: '160px', borderTop: '1px solid #1f2937', padding: '8px 0' }}>
+                                <p style={{ fontWeight: 700, fontSize: '0.875rem', color: '#000' }}>Fecha de Emisión</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute bottom-4 left-0 w-full text-center">
-                        <p className="text-[10px] text-gray-400">verify.manualdelmecanico.com</p>
+                    <div style={{ position: 'absolute', bottom: '16px', left: 0, width: '100%', textAlign: 'center' }}>
+                        <p style={{ fontSize: '10px', color: '#9ca3af' }}>verify.codigodelmecanico.com</p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex gap-4 justify-center no-print">
-                <button className="btn w-auto px-8 gap-2" onClick={generatePDF}>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }} className="no-print">
+                <button className="btn" style={{
+                    width: 'auto',
+                    padding: '0.875rem 2rem',
+                    gap: '8px'
+                }} onClick={generatePDF}>
                     <Download size={20} />
                     Descargar PDF
                 </button>

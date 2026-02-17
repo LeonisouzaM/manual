@@ -1,29 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100" width="450" height="100">
-  <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#16a34a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#15803d;stop-opacity:1" />
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 86">
+  <!-- Thin red accent line top -->
+  <rect x="80" y="0" width="140" height="2" rx="1" fill="#dc2626"/>
 
-  <!-- Icon Section -->
-  <g transform="translate(10, 10)">
-    <!-- Gear Shape Base -->
-    <path fill="url(#grad1)" d="M40,0C17.9,0,0,17.9,0,40s17.9,40,40,40s40-17.9,40-40S62.1,0,40,0z M40,68c-15.5,0-28-12.5-28-28 s12.5-28,28-28s28,12.5,28,28S55.5,68,40,68z"/>
-    <!-- Wrench Inside -->
-    <path fill="#111827" d="M48.5,23.5c-3.6-3.6-9.4-3.6-13,0l-12,12l-7.5-2.5l-2.5,7.5l12,12l2.5,7.5l7.5-2.5l12-12
-      c3.6-3.6,3.6-9.4,0-13L48.5,23.5z M39,45l-4-4l4-4l4,4L39,45z"/>
-  </g>
+  <!-- EL CÓDIGO DEL -->
+  <text x="150" y="22" text-anchor="middle" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600" fill="#9ca3af" letter-spacing="3">EL CÓDIGO DEL</text>
 
-  <!-- Text Section -->
-  <g transform="translate(100, 0)">
-    <!-- Top Line -->
-    <text x="0" y="30" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="14" fill="#16a34a" letter-spacing="1.5">EL CÓDIGO DEL</text>
-    
-    <!-- Middle Line (Main) -->
-    <text x="0" y="68" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="38" fill="#111827" letter-spacing="-1">MECÁNICO</text>
-    
-    <!-- Bottom Line -->
-    <text x="5" y="90" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="16" fill="#4B5563" letter-spacing="4.5">PROFESIONAL</text>
-  </g>
+  <!-- MECÁNICO -->
+  <text x="150" y="55" text-anchor="middle" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="900" fill="#111827" letter-spacing="2">MECÁNICO</text>
+
+  <!-- Red dot separators -->
+  <circle cx="96" cy="74" r="2.5" fill="#dc2626"/>
+  <circle cx="204" cy="74" r="2.5" fill="#dc2626"/>
+
+  <!-- PROFESIONAL -->
+  <text x="150" y="77" text-anchor="middle" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#dc2626" letter-spacing="4">PROFESIONAL</text>
+
+  <!-- Thin red accent line bottom -->
+  <rect x="80" y="84" width="140" height="2" rx="1" fill="#dc2626"/>
 </svg>

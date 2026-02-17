@@ -24,13 +24,24 @@ const Welcome = memo(({ onNext }) => {
                     </svg>
                 </div>
             </div>
-            <h1 className="text-center mb-6 text-primary">{title}</h1>
+            <h1 style={{
+                textAlign: 'center',
+                marginBottom: '1.5rem',
+                color: '#dc2626',
+                fontSize: '1.5rem',
+                lineHeight: 1.3,
+                fontWeight: 800
+            }}>{title}</h1>
             <div className="text-left mb-8 space-y-4">
                 {text.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={index} style={{
+                        color: '#374151',
+                        lineHeight: 1.7,
+                        fontSize: '0.95rem'
+                    }}>{paragraph}</p>
                 ))}
             </div>
-            <button className="btn w-full" onClick={() => {
+            <button className="btn btn-primary w-full" onClick={() => {
                 if (window.fbq) window.fbq('track', 'ViewContent');
                 onNext();
             }}>

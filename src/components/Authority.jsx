@@ -1,35 +1,62 @@
 import React from 'react';
 import StepLayout from './StepLayout';
 import { copy } from '../data/quizData';
-// ShieldCheck is no longer used, but I can keep it or remove it. I'll remove it since I'm using the image now.
 
 const Authority = ({ onNext }) => {
     const { title, text, button } = copy.authority;
 
     return (
         <StepLayout>
-            {/* Certificate Image - Placeholder for user content */}
+            {/* Certificate Image */}
             <div className="mb-6 flex justify-center">
-                <img
-                    src="/authority-cert.jpg"
-                    className="rounded-lg shadow-lg w-full max-w-md object-cover"
-                    style={{ maxHeight: '300px' }}
-                    width="400"
-                    height="300"
-                />
+                <div style={{
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    border: '2px solid #fecaca',
+                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
+                    width: '100%',
+                    maxWidth: '400px'
+                }}>
+                    <img
+                        src="/authority-cert.jpg"
+                        style={{
+                            width: '100%',
+                            objectFit: 'cover',
+                            maxHeight: '300px',
+                            display: 'block'
+                        }}
+                        width="400"
+                        height="300"
+                    />
+                </div>
             </div>
 
-            <h2 className="text-center font-bold text-2xl mb-6 text-text-highlight uppercase tracking-wide">
+            <h2 style={{
+                textAlign: 'center',
+                fontWeight: 800,
+                fontSize: '1.25rem',
+                marginBottom: '1.5rem',
+                color: '#111827',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+            }}>
                 {title}
             </h2>
 
-            <div className="text-left mb-8 space-y-4 text-text-muted leading-relaxed">
+            <div className="text-left mb-8 space-y-4">
                 {text.map((paragraph, index) => (
-                    <p key={index}>{paragraph}</p>
+                    <p key={index} style={{
+                        color: '#6b7280',
+                        lineHeight: 1.7,
+                        fontSize: '0.925rem'
+                    }}>{paragraph}</p>
                 ))}
             </div>
 
-            <button className="btn w-full btn-primary font-bold text-lg py-3" onClick={onNext}>
+            <button className="btn btn-primary w-full" style={{
+                fontSize: '1.1rem',
+                padding: '0.875rem 1.5rem'
+            }} onClick={onNext}>
                 {button}
             </button>
         </StepLayout>

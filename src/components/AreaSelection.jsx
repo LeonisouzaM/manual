@@ -18,12 +18,24 @@ const AreaSelection = ({ onNext, setArea }) => {
                     <Settings size={32} />
                 </div>
             </div>
-            <h2 className="text-center mb-8">{question}</h2>
+            <h2 style={{
+                textAlign: 'center',
+                marginBottom: '2rem',
+                color: '#111827',
+                fontSize: '1.375rem',
+                lineHeight: 1.3
+            }}>{question}</h2>
             <div className="space-y-3">
                 {options.map((option, index) => (
                     <button
                         key={index}
-                        className="quiz-option text-center justify-center font-bold"
+                        className="quiz-option"
+                        style={{
+                            textAlign: 'center',
+                            justifyContent: 'center',
+                            fontWeight: 600,
+                            display: 'flex'
+                        }}
                         onClick={() => handleSelect(option)}
                     >
                         {option}

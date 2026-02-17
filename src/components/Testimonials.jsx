@@ -7,7 +7,7 @@ const testimonials = [
         location: "Monterrey, Nuevo León",
         text: "¡Nombre, cállate! Pensé que era puro cuento, pero el certificado sí es oficial. Ya lo puse en el taller y los clientes hasta me tratan con más respeto. ¡Jálense, sí conviene!",
         photo: "https://randomuser.me/api/portraits/men/75.jpg",
-        evidence: "/mechanic-evidence-1.jpg" // Foto do cliente segurando o certificado
+        evidence: "/mechanic-evidence-1.jpg"
     },
     {
         name: "Jose Luiz Garcia",
@@ -33,80 +33,64 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-    const cardStyle = {
-        backgroundColor: '#ffffff',
-        borderRadius: '16px',
-        padding: '24px',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-        border: '1px solid #f3f4f6',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '16px',
-        marginBottom: '20px'
-    };
-
-    const nameStyle = {
-        fontSize: '16px',
-        fontWeight: '700',
-        color: '#111827',
-        lineHeight: '1.2'
-    };
-
-    const locationStyle = {
-        fontSize: '13px',
-        color: '#6b7280',
-        marginTop: '4px',
-        textTransform: 'uppercase',
-        letterSpacing: '0.5px'
-    };
-
-    const textStyle = {
-        fontSize: '15px',
-        lineHeight: '1.6',
-        color: '#374151',
-        fontStyle: 'italic'
-    };
-
-    const badgeStyle = {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '6px',
-        fontSize: '12px',
-        fontWeight: '700',
-        color: '#15803d',
-        marginTop: 'auto',
-        paddingTop: '16px',
-        borderTop: '1px solid #f3f4f6'
-    };
-
     return (
-        <div style={{ width: '100%', maxWidth: '100%', margin: '0 auto', padding: '20px 0' }}>
+        <div style={{ width: '100%', padding: '1.25rem 0' }}>
             <h3 style={{
                 textAlign: 'center',
-                fontSize: '24px',
-                fontWeight: '800',
+                fontSize: '1.35rem',
+                fontWeight: 800,
                 color: '#111827',
-                marginBottom: '24px',
-                lineHeight: '1.3'
+                marginBottom: '1.5rem',
+                lineHeight: 1.3,
+                fontFamily: 'Outfit, Inter, sans-serif'
             }}>
-                Lo que dice la raza <span style={{ color: '#16a34a' }}>Certificada</span> 🇲🇽
+                Lo que dice la raza <span style={{ color: '#dc2626' }}>Certificada</span> 🇲🇽
             </h3>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {testimonials.map((t, index) => (
-                    <div key={index} style={cardStyle}>
-                        {/* Header: Photo + Info */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-
-
+                    <div key={index} style={{
+                        background: '#ffffff',
+                        borderRadius: '16px',
+                        padding: '1.5rem',
+                        border: '1px solid #e5e7eb',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '14px',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 1px 4px rgba(0,0,0,0.03)'
+                    }}
+                        onMouseEnter={e => {
+                            e.currentTarget.style.borderColor = '#fecaca';
+                            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.06)';
+                        }}
+                        onMouseLeave={e => {
+                            e.currentTarget.style.borderColor = '#e5e7eb';
+                            e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.03)';
+                        }}
+                    >
+                        {/* Header */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                             <div style={{ flex: 1 }}>
-                                <h4 style={nameStyle}>{t.name}</h4>
-                                <p style={locationStyle}>{t.location}</p>
-                                <div style={{ display: 'flex', gap: '2px', marginTop: '6px' }}>
+                                <h4 style={{
+                                    fontSize: '0.95rem',
+                                    fontWeight: 700,
+                                    color: '#111827',
+                                    lineHeight: 1.2,
+                                    marginBottom: '4px'
+                                }}>{t.name}</h4>
+                                <p style={{
+                                    fontSize: '0.7rem',
+                                    color: '#9ca3af',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.5px',
+                                    marginBottom: '6px'
+                                }}>{t.location}</p>
+                                <div style={{ display: 'flex', gap: '2px' }}>
                                     {[...Array(5)].map((_, i) => (
                                         <Star
                                             key={i}
-                                            size={16}
+                                            size={14}
                                             fill="#fbbf24"
                                             color="#fbbf24"
                                             strokeWidth={0}
@@ -116,20 +100,26 @@ const Testimonials = () => {
                             </div>
                         </div>
 
-                        {/* Comment Body */}
-                        <div style={{ position: 'relative' }}>
-                            <p style={textStyle}>
+                        {/* Comment */}
+                        <div>
+                            <p style={{
+                                fontSize: '0.9rem',
+                                lineHeight: 1.65,
+                                color: '#6b7280',
+                                fontStyle: 'italic',
+                                marginBottom: 0
+                            }}>
                                 "{t.text}"
                             </p>
                         </div>
 
-                        {/* Photo Evidence (New!) */}
+                        {/* Evidence */}
                         <div style={{
                             width: '100%',
                             borderRadius: '12px',
                             overflow: 'hidden',
-                            border: '1px solid #e5e7eb',
-                            marginTop: '8px'
+                            border: '1px solid #f0f0f0',
+                            marginTop: '4px'
                         }}>
                             <img
                                 src={t.evidence}
@@ -140,38 +130,48 @@ const Testimonials = () => {
                                     display: 'block'
                                 }}
                                 onError={(e) => {
-                                    e.target.style.display = 'none'; // Hide if simplified
+                                    e.target.style.display = 'none';
                                 }}
                             />
                         </div>
 
-                        {/* Verified Footer */}
-                        <div style={badgeStyle}>
-                            <CheckCircle2 size={16} color="#16a34a" strokeWidth={3} />
-                            <span>COMPRA VERIFICADA</span>
+                        {/* Verified Badge */}
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px',
+                            fontSize: '0.7rem',
+                            fontWeight: 700,
+                            color: '#16a34a',
+                            marginTop: 'auto',
+                            paddingTop: '12px',
+                            borderTop: '1px solid #f3f4f6'
+                        }}>
+                            <CheckCircle2 size={14} color="#16a34a" strokeWidth={3} />
+                            <span style={{ letterSpacing: '0.05em' }}>COMPRA VERIFICADA</span>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Social Proof Footer - Blue Theme */}
+            {/* Social Proof Counter */}
             <div style={{
-                marginTop: '32px',
+                marginTop: '1.75rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                color: '#16a34a', // Full Green text
-                fontSize: '14px',
-                fontWeight: '700',
-                backgroundColor: '#f0fdf4', // Light green bg
-                border: '1px solid #bbf7d0', // Green border
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: '#dc2626',
+                background: 'rgba(220, 38, 38, 0.04)',
+                border: '1px solid rgba(220, 38, 38, 0.12)',
                 padding: '10px 20px',
                 borderRadius: '9999px',
                 width: 'fit-content',
-                margin: '32px auto 0'
+                margin: '1.75rem auto 0'
             }}>
-                <span style={{ fontSize: '18px' }}>🇲🇽</span>
+                <span style={{ fontSize: '1.1rem' }}>🇲🇽</span>
                 <span>+2,847 mecánicos certificados en todo México</span>
             </div>
         </div>

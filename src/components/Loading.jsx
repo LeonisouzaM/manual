@@ -1,29 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import StepLayout from './StepLayout';
-import { Loader2 } from 'lucide-react';
 
 const Loading = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);
+    const [statusText, setStatusText] = useState('Verificando respuestas...');
 
     useEffect(() => {
-        // Deterministic progress for UI
         const startTime = Date.now();
         const duration = 3000;
+
+        const statusTexts = [
+            { at: 0, text: 'Verificando respuestas...' },
+            { at: 25, text: 'Analizando competencias...' },
+            { at: 50, text: 'Calculando puntuación...' },
+            { at: 75, text: 'Generando resultado...' },
+            { at: 95, text: 'Casi listo...' },
+        ];
 
         const interval = setInterval(() => {
             const elapsed = Date.now() - startTime;
             const newProgress = Math.min((elapsed / duration) * 100, 100);
             setProgress(newProgress);
 
+            const currentStatus = statusTexts.filter(s => newProgress >= s.at).pop();
+            if (currentStatus) setStatusText(currentStatus.text);
+
             if (elapsed >= duration) {
                 clearInterval(interval);
             }
         }, 50);
 
-        // Guaranteed completion trigger
         const completeTimer = setTimeout(() => {
             onComplete();
-        }, duration + 200); // 3s + 200ms buffer
+        }, duration + 200);
 
         return () => {
             clearInterval(interval);
@@ -33,40 +42,93 @@ const Loading = ({ onComplete }) => {
 
     return (
         <StepLayout>
-            <div className="flex flex-col items-center justify-center py-16 text-center">
-                {/* Custom Spinner */}
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '3rem 1rem',
+                textAlign: 'center'
+            }}>
+                {/* Circular progress */}
+                <div style={{
+                    position: 'relative',
+                    width: '80px',
+                    height: '80px',
+                    marginBottom: '2rem'
+                }}>
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="34" fill="none" stroke="#f3f4f6" strokeWidth="4" />
+                        <circle
+                            cx="40" cy="40" r="34"
+                            fill="none"
+                            stroke="url(#loadingGrad)"
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                            strokeDasharray={`${progress * 2.13} 213.6`}
+                            style={{
+                                transform: 'rotate(-90deg)',
+                                transformOrigin: 'center',
+                                transition: 'stroke-dasharray 0.1s ease-out'
+                            }}
+                        />
+                        <defs>
+                            <linearGradient id="loadingGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor="#dc2626" />
+                                <stop offset="100%" stopColor="#ef4444" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <span style={{
+                            fontSize: '1.25rem',
+                            fontWeight: 800,
+                            color: '#dc2626',
+                            fontFamily: 'Outfit, Inter, sans-serif'
+                        }}>{Math.round(progress)}%</span>
+                    </div>
+                </div>
 
-
-                <h2 className="text-xl md:text-2xl font-bold mb-2 text-text-main">
-                    Analizando sus respuestas...
+                <h2 style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 700,
+                    marginBottom: '0.5rem',
+                    color: '#111827'
+                }}>
+                    {statusText}
                 </h2>
-                <p className="text-text-muted text-sm md:text-base mb-6">
+                <p style={{
+                    color: '#9ca3af',
+                    fontSize: '0.875rem',
+                    marginBottom: '1.5rem'
+                }}>
                     Esto puede llevar unos segundos.
                 </p>
 
-                {/* Progress Bar */}
+                {/* Progress bar */}
                 <div style={{
                     width: '100%',
-                    maxWidth: '320px',
-                    height: '12px',
-                    backgroundColor: '#eff6ff', // Light blue track
+                    maxWidth: '280px',
+                    height: '6px',
+                    backgroundColor: '#f3f4f6',
                     borderRadius: '10px',
-                    overflow: 'hidden',
-                    marginTop: '10px',
-                    border: '1px solid #bfdbfe' // Light blue border
+                    overflow: 'hidden'
                 }}>
                     <div style={{
                         width: `${progress}%`,
                         height: '100%',
-                        backgroundColor: '#2563eb', // Blue fill
+                        background: 'linear-gradient(90deg, #dc2626, #ef4444)',
                         transition: 'width 0.05s linear',
-                        boxShadow: '0 0 10px rgba(37, 99, 235, 0.5)'
+                        borderRadius: '10px',
+                        boxShadow: '0 0 10px rgba(220, 38, 38, 0.3)'
                     }}></div>
                 </div>
-
-                <p className="mt-3 font-bold" style={{ color: '#2563eb' }}>
-                    {Math.round(progress)}%
-                </p>
             </div>
         </StepLayout>
     );

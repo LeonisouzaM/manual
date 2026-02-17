@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import StepLayout from './StepLayout';
 import { copy } from '../data/quizData';
-import { Lock } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const Result = ({ onNext }) => {
@@ -9,24 +8,19 @@ const Result = ({ onNext }) => {
 
     const [score, setScore] = useState(0);
     const targetScore = 92;
-    const circumference = 440; // 2 * PI * 70 approx
+    const circumference = 440;
 
     useEffect(() => {
-        // Confetti logic
         const duration = 3000;
         const end = Date.now() + duration;
 
-        // Progress Bar Animation
         let startTimestamp = null;
-        const animDuration = 1500; // 1.5 seconds for fast load
+        const animDuration = 1500;
 
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / animDuration, 1);
-
-            // Ease out quart
             const easeProgress = 1 - Math.pow(1 - progress, 4);
-
             setScore(Math.floor(easeProgress * targetScore));
 
             if (progress < 1) {
@@ -42,14 +36,14 @@ const Result = ({ onNext }) => {
                 angle: 60,
                 spread: 55,
                 origin: { x: 0 },
-                colors: ['#16a34a', '#10b981']
+                colors: ['#dc2626', '#ef4444', '#f87171']
             });
             confetti({
                 particleCount: 2,
                 angle: 120,
                 spread: 55,
                 origin: { x: 1 },
-                colors: ['#16a34a', '#10b981']
+                colors: ['#dc2626', '#ef4444', '#f87171']
             });
 
             if (Date.now() < end) {
@@ -58,10 +52,8 @@ const Result = ({ onNext }) => {
         };
 
         frame();
-        frame();
     }, []);
 
-    // Track Lead Event (Quiz Completed)
     useEffect(() => {
         if (window.fbq) {
             window.fbq('track', 'Lead');
@@ -70,55 +62,112 @@ const Result = ({ onNext }) => {
 
     return (
         <StepLayout>
-            {/* Grid Layout for Score and Status */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                {/* Score Card */}
+                <div style={{
+                    background: '#ffffff',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '16px',
+                    padding: '1.75rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 12px rgba(0,0,0,0.04)'
+                }}>
+                    <h3 style={{
+                        color: '#dc2626',
+                        fontWeight: 700,
+                        fontSize: '0.75rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        marginBottom: '0.25rem'
+                    }}>TU PUNTUACIÓN:</h3>
+                    <p style={{
+                        color: '#9ca3af',
+                        fontSize: '0.8rem',
+                        marginBottom: '1.25rem'
+                    }}>Nivel excelente</p>
 
-                {/* Left Column: Score */}
-                <div className="border border-border-light rounded-2xl p-6 flex flex-col items-center justify-center bg-white shadow-sm">
-                    <h3 className="text-[#3b82f6] font-bold text-sm uppercase tracking-wide mb-1">TU PUNTUACIÓN:</h3>
-                    <p className="text-text-muted text-sm mb-6">Nivel excelente</p>
-
-                    {/* Circular Progress Bar SVG */}
-                    <div className="relative w-40 h-40">
-                        <svg className="w-full h-full transform -rotate-90">
+                    {/* Circular progress */}
+                    <div style={{ position: 'relative', width: '160px', height: '160px' }}>
+                        <svg width="160" height="160" style={{ transform: 'rotate(-90deg)' }}>
+                            <circle cx="80" cy="80" r="70" fill="none" stroke="#f3f4f6" strokeWidth="10" />
                             <circle
-                                cx="80"
-                                cy="80"
-                                r="70"
-                                className="stroke-gray-100 fill-none"
-                                strokeWidth="10"
-                            />
-                            <circle
-                                cx="80"
-                                cy="80"
-                                r="70"
-                                className="stroke-[#3b82f6] fill-none"
+                                cx="80" cy="80" r="70"
+                                fill="none"
+                                stroke="url(#scoreGrad)"
                                 strokeWidth="10"
                                 strokeDasharray="440"
                                 strokeDashoffset={circumference - (score / 100) * circumference}
                                 strokeLinecap="round"
                                 style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
                             />
+                            <defs>
+                                <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#dc2626" />
+                                    <stop offset="100%" stopColor="#ef4444" />
+                                </linearGradient>
+                            </defs>
                         </svg>
-                        <div className="absolute inset-0 flex items-center justify-center pt-1">
-                            <span className="text-5xl font-black text-[#1e293b] leading-none tracking-tighter">{score}%</span>
+                        <div style={{
+                            position: 'absolute',
+                            inset: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <span style={{
+                                fontSize: '2.75rem',
+                                fontWeight: 900,
+                                color: '#111827',
+                                fontFamily: 'Outfit, Inter, sans-serif',
+                                letterSpacing: '-0.05em'
+                            }}>{score}%</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Right Column: Status & Certificate Lock */}
-                <div className="flex flex-col gap-4">
-                    {/* Status Box */}
-                    <div className="border border-border-light rounded-xl p-4 flex items-center justify-center bg-white shadow-sm">
-                        <span className="font-bold text-text-main">Resultado: <span className="text-success font-black">APROBADO</span></span>
+                {/* Right Column */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                    {/* Status */}
+                    <div style={{
+                        background: 'rgba(220, 38, 38, 0.04)',
+                        border: '1px solid rgba(220, 38, 38, 0.15)',
+                        borderRadius: '12px',
+                        padding: '1rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}>
+                        <span style={{
+                            fontWeight: 700,
+                            color: '#111827',
+                            fontSize: '0.95rem'
+                        }}>Resultado: <span style={{
+                            color: '#16a34a',
+                            fontWeight: 900
+                        }}>APROBADO</span></span>
                     </div>
 
-                    {/* Locked Certificate Box */}
-                    <div className="border border-[#16a34a] rounded-xl flex items-center justify-center relative overflow-hidden h-full min-h-[220px] bg-white p-0">
+                    {/* Locked Certificate */}
+                    <div style={{
+                        border: '2px solid #fecaca',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        flex: 1,
+                        minHeight: '220px',
+                        boxShadow: '0 2px 12px rgba(0,0,0,0.04)'
+                    }}>
                         <img
                             src="/certificate-locked.jpg"
                             alt="Certificado Bloqueado"
-                            className="w-full h-full object-cover rounded-xl"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                display: 'block'
+                            }}
                             width="300"
                             height="220"
                         />
@@ -126,15 +175,29 @@ const Result = ({ onNext }) => {
                 </div>
             </div>
 
-            {/* Description Text */}
-            <div className="text-center mb-8 px-2">
-                <p className="text-text-main text-lg leading-relaxed">
-                    Tu desempeño fue <span className="text-[#16a34a] font-bold">superior al promedio</span> de los profesionales evaluados.
-                    Demostraste dominio de las principales áreas de la mecánica y estás apto para emitir tu <span className="text-[#16a34a] font-bold">Certificado Profesional.</span>
+            {/* Description */}
+            <div style={{
+                textAlign: 'center',
+                marginBottom: '2rem',
+                padding: '0 0.5rem'
+            }}>
+                <p style={{
+                    color: '#374151',
+                    fontSize: '1rem',
+                    lineHeight: 1.7
+                }}>
+                    Tu desempeño fue <span style={{
+                        color: '#dc2626',
+                        fontWeight: 700
+                    }}>superior al promedio</span> de los profesionales evaluados.
+                    Demostraste dominio de las principales áreas de la mecánica y estás apto para emitir tu <span style={{
+                        color: '#dc2626',
+                        fontWeight: 700
+                    }}>Certificado Profesional.</span>
                 </p>
             </div>
 
-            <button className="btn w-full btn-primary bg-[#16a34a] hover:bg-[#15803d]" onClick={onNext}>
+            <button className="btn btn-primary w-full" onClick={onNext}>
                 {button}
             </button>
         </StepLayout>

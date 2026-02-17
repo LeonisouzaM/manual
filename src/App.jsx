@@ -2,7 +2,6 @@
 import React, { useState, Suspense, lazy } from 'react';
 import Welcome from './components/Welcome';
 
-// Lazy load QuizFlow only when needed
 const QuizFlow = lazy(() => import('./components/QuizFlow'));
 
 import { questions } from './data/quizData';
@@ -15,15 +14,13 @@ function App() {
     const nextStep = () => setStep(s => s + 1);
 
     const handleAnswer = (option) => {
-        // Save answer
         const currentQuestionId = questions[step - 5].id;
         setAnswers(prev => ({ ...prev, [currentQuestionId]: option }));
 
-        // Check if it's the last question
         if (step - 5 === questions.length - 1) {
-            nextStep(); // Go to loading
+            nextStep();
         } else {
-            nextStep(); // Go to next question
+            nextStep();
         }
     };
 
@@ -36,17 +33,21 @@ function App() {
             <header className="app-header">
                 <img
                     src="/logo.svg"
-                    alt="Manual del Mecánico"
+                    alt="El Código del Mecánico Profesional"
                     className="app-logo"
-                    width="150"
-                    height="40"
+                    width="240"
+                    height="50"
                 />
             </header>
             <main className="flex-grow flex flex-col items-center justify-center p-4">
                 {step === 1 ? (
                     <Welcome onNext={nextStep} />
                 ) : (
-                    <Suspense fallback={<div className="flex items-center justify-center h-40"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#16a34a]"></div></div>}>
+                    <Suspense fallback={
+                        <div className="flex items-center justify-center h-40">
+                            <div className="loading-spinner animate-spin"></div>
+                        </div>
+                    }>
                         <QuizFlow
                             step={step}
                             onNext={nextStep}
@@ -59,9 +60,23 @@ function App() {
                 )}
             </main>
 
-            <footer className="p-4 text-center text-xs text-text-muted">
-                <p>© {new Date().getFullYear()} Manual del Mecánico. Todos los derechos reservados.</p>
-                <div className="flex justify-center gap-4 mt-2 opacity-50">
+            <footer style={{
+                padding: '1.5rem 1rem',
+                textAlign: 'center',
+                borderTop: '1px solid #f0f0f0',
+                background: '#f8f9fa'
+            }}>
+                <p style={{ fontSize: '0.75rem', color: '#6b7280', marginBottom: '0.5rem' }}>
+                    © {new Date().getFullYear()} El Código del Mecánico Profesional. Todos los derechos reservados.
+                </p>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '1.5rem',
+                    opacity: 0.5,
+                    fontSize: '0.7rem',
+                    color: '#9ca3af'
+                }}>
                     <span>Términos</span>
                     <span>Privacidad</span>
                     <span>Soporte</span>

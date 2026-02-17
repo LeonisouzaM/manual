@@ -12,7 +12,7 @@ export const copy = {
   },
   socialProof: {
     text: [
-      "Más de 3,000 mecánicos ya han emitido su certificado a través del Manual del Mecánico, utilizándolo para generar mayor confianza con sus clientes y destacar su profesionalismo dentro del taller.",
+      "Más de 3,000 mecánicos ya han emitido su certificado a través de El Código del Mecánico Profesional, utilizándolo para generar mayor confianza con sus clientes y destacar su profesionalismo dentro del taller.",
       "Esta certificación no tiene como objetivo formar nuevos mecánicos.",
       "Existe para reconocer a quienes ya ejercen la profesión y desean comprobar su experiencia y conocimiento técnico.",
       "Ahora responderás algunas preguntas relacionadas con tu área.",
@@ -32,7 +32,7 @@ export const copy = {
   authority: {
     title: "SOLO PARA RECORDAR…",
     text: [
-      "Más de 3,500 profesionales ya aseguraron su Certificado del Manual del Mecánico para fortalecer su credibilidad y aumentar la confianza de sus clientes.",
+      "Más de 3,500 profesionales ya aseguraron su Certificado de El Código del Mecánico Profesional para fortalecer su credibilidad y aumentar la confianza de sus clientes.",
       "Mecánicos con experiencia, principiantes y especialistas utilizan este certificado para comprobar conocimientos, demostrar profesionalismo y destacar dentro del taller.",
       "El certificado es autenticado, cuenta con código único de verificación y fue desarrollado como un diferencial real para el día a día del mecánico."
     ],
