@@ -96,15 +96,7 @@ const Payment = ({ onPayment }) => {
                 {footerText}
             </p>
 
-            {/* Simulation Link */}
-            <div className="text-center mt-6">
-                <button
-                    className="text-[10px] text-text-muted underline hover:text-primary"
-                    onClick={onPayment}
-                >
-                    (Simular Pago Exitoso)
-                </button>
-            </div>
+
         </StepLayout>
     );
 };
